@@ -16,9 +16,9 @@ namespace BfCompiler
         private LocalBuilder working;
         private LocalBuilder index;
 
-        //Stack<Label> startStack = new Stack<Label>();
-        //Stack<Label> endStack = new Stack<Label>();
-        //private Dictionary<Label, Label> endStart = new Dictionary<Label, Label>();
+        Stack<Label> startStack = new Stack<Label>();
+        Stack<Label> endStack = new Stack<Label>();
+        private Dictionary<Label, Label> endStart = new Dictionary<Label, Label>();
 
 
         public BfCompiler(string code)
@@ -64,13 +64,12 @@ namespace BfCompiler
                     case ',':
                         ReadChar();
                         break;
-                    /*case '[':
+                   case '[':
                         WhileStart();
                         break;
                     case ']':
                         WhileEnd();
-                        break;*/
-
+                        break;
                 }
             });
 
@@ -78,7 +77,7 @@ namespace BfCompiler
             Seal(tb, ab, mb, filename);
         }
 
-       /* private void WhileStart()
+        private void WhileStart()
         {
             var startLabel = ilg.DefineLabel();
             var endLabel = ilg.DefineLabel();
@@ -88,7 +87,7 @@ namespace BfCompiler
             ilg.MarkLabel(startLabel);
             ilg.Emit(OpCodes.Ldloc, array);
             ilg.Emit(OpCodes.Ldloc, index);
-            ilg.Emit(OpCodes.Ldelem);
+            ilg.Emit(OpCodes.Ldelem, typeof(long));
             ilg.Emit(OpCodes.Ldc_I4, 0);
             ilg.Emit(OpCodes.Beq, endLabel);
         }
@@ -100,10 +99,10 @@ namespace BfCompiler
             ilg.MarkLabel(endLabel);
             ilg.Emit(OpCodes.Ldloc, array);
             ilg.Emit(OpCodes.Ldloc, index);
-            ilg.Emit(OpCodes.Ldelem);
+            ilg.Emit(OpCodes.Ldelem, typeof(long));
             ilg.Emit(OpCodes.Ldc_I4, 0);
             ilg.Emit(OpCodes.Bne_Un, endStart[endLabel]);
-        }*/
+        }
 
         private void ReadChar()
         {
