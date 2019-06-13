@@ -19,3 +19,4 @@ If the interpreter errors on overflow this is where it'll happen
 >>.++.+++++++..<-.>>-
 Clean up used cells.
 [[-]<]
+Example taken from: https://esolangs org/wiki/Brainfuck#Cell_Size
